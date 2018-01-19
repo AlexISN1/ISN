@@ -6,7 +6,7 @@ from constantes import *
 pygame.init()
 
 #Ouverture de la fenêtre Pygame
-fenetre = pygame.display.set_mode((1080, 820))
+fenetre = pygame.display.set_mode((cote_fenetre, cote_fenetre))
 
 
 

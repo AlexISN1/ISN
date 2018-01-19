@@ -26,8 +26,16 @@ class Perso:
 	
 	def deplacer(self, direction):
 		
+		#Déplacement vers la droite
 		if direction == 'droite':
-		
+			#Pour ne pas dépasser l'écran
+			if self.case_x < (nombre_sprite_cote - 1):
+				#On vérifie que la case de destination n'est pas un mur
+					#Déplacement d'une case
+					self.case_x += 1
+					#Calcul de la position "réelle" en pixel
+					self.x = self.case_x * taille_sprite
+			#Image dans la bonne direction
 			self.direction = self.droite
 		
 		if direction == 'gauche':
@@ -36,8 +44,11 @@ class Perso:
 					self.x = self.case_x * taille_sprite
 			self.direction = self.gauche
 		
+		#Déplacement vers le haut
 		if direction == 'haut':
-				
+			if self.case_y > 0:
+					self.case_y -= 1
+					self.y = self.case_y * taille_sprite
 			self.direction = self.haut
 		
 		if direction == 'bas':

@@ -6,10 +6,12 @@ from pygame.locals import *
 #Paramètres de la fenêtre
 nombre_sprite_cote = 15
 taille_sprite = 30
-cote_fenetre = nombre_sprite_cote * taille_sprite
 
 #Personnalisation de la fenêtre
 titre_fenetre = "DK Labyrinthe"
-image_accueil = "images/accueil.gif"
-fond = "images/latest.png"
-
+image_accueil = "images/pageaccueil.png"
+fond = "images/fond.jpg"
+image_mur = "images/mur.png"
+image_depart = "images/depart.png"
+image_arrivee = "images/arrivee.png"
+image_fond = "images/fond.jpg"

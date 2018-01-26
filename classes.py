@@ -32,7 +32,7 @@ class Perso:
 			if self.case_x < (nombre_sprite_cote - 1):
 				#On vérifie que la case de destination n'est pas un mur
 					#Déplacement d'une case
-					self.case_x += 1
+					self.case_x += 0.5
 					#Calcul de la position "réelle" en pixel
 					self.x = self.case_x * taille_sprite
 			#Image dans la bonne direction
@@ -40,21 +40,21 @@ class Perso:
 		
 		if direction == 'gauche':
 			if self.case_x > 0:
-					self.case_x -= 1
+					self.case_x -= 0.5
 					self.x = self.case_x * taille_sprite
 			self.direction = self.gauche
 		
 		#Déplacement vers le haut
 		if direction == 'haut':
 			if self.case_y > 0:
-					self.case_y -= 1
+					self.case_y -= 0.5
 					self.y = self.case_y * taille_sprite
 			self.direction = self.haut
 		
 		if direction == 'bas':
 			if self.case_y < (nombre_sprite_cote - 1):
 				
-					self.case_y += 1
+					self.case_y += 0.5
 					self.y = self.case_y * taille_sprite
 			self.direction = self.bas
 

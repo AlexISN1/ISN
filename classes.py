@@ -36,7 +36,7 @@ class Niveau:
 		"""Méthode permettant d'afficher le niveau en fonction 
 		de la liste de structure renvoyée par generer()"""
 		#Chargement des images (seule celle d'arrivée contient de la transparence)
-		mur = pygame.image.load(image_mur).convert()
+		mur = pygame.image.load(image_mur).convert_alpha()
 		depart = pygame.image.load(image_depart).convert()
 		arrivee = pygame.image.load(image_arrivee).convert_alpha()
 		

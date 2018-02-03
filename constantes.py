@@ -10,8 +10,7 @@ taille_sprite = 30
 #Personnalisation de la fenêtre
 titre_fenetre = "DK Labyrinthe"
 image_accueil = "images/pageaccueil.png"
-fond = "images/fond.jpg"
-image_mur = "images/mur.png"
+image_mur = "images/arbre-final.png"
 image_depart = "images/depart.png"
 image_arrivee = "images/arrivee.png"
-image_fond = "images/fond.jpg"
+image_fond = "images/fond1.jpg"

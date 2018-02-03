@@ -17,11 +17,15 @@ from constantes import *
 
 pygame.init()
 
+pygame.mixer.music.load('son.mp3')
+pygame.mixer.music.play(0)
+
+
 #Ouverture de la fenêtre Pygame (carré : largeur = hauteur)
-fenetre = pygame.display.set_mode((640, 480))
+fenetre = pygame.display.set_mode((450, 450))
 #Icone
 
-
+ 
 #Titre
 pygame.display.set_caption(titre_fenetre)
 
@@ -29,6 +33,8 @@ pygame.display.set_caption(titre_fenetre)
 #BOUCLE PRINCIPALE
 continuer = 1
 while continuer:	
+
+
 	#Chargement et affichage de l'écran d'accueil
 	accueil = pygame.image.load(image_accueil).convert()
 	fenetre.blit(accueil, (0,0))
@@ -45,14 +51,18 @@ while continuer:
 	
 		#Limitation de vitesse de la boucle
 		pygame.time.Clock().tick(30)
-	
+
+
 		for event in pygame.event.get():
 		
 			#Si l'utilisateur quitte, on met les variables 
 			#de boucle à 0 pour n'en parcourir aucune et fermer
 			if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
+				print("aurevoir")
+
 				continuer_accueil = 0
 				continuer_jeu = 0
+
 				continuer = 0
 				#Variable de choix du niveau
 				choix = 0
@@ -122,4 +132,31 @@ while continuer:
 
 		#Victoire -> Retour à l'accueil
 		if niveau.structure[dk.case_y][dk.case_x] == 'a':
+			continuer_accueil = 0
 			continuer_jeu = 0
+			continuer = 0
+			pygame.quit()
+			continuer_jeu_1 = 1
+
+			while continuer_jeu_1 : 
+				a = input()
+				if a == '1' : 
+					continuer = 1
+					continuer_jeu = 1
+					continuer_jeu_1 = 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

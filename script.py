@@ -21,7 +21,6 @@ pygame.display.set_caption(titre_fenetre)
 continuer = 1
 
 while continuer:
-
 	#score
 	score = {}
 	nom = input('Votre pseudo : ')
@@ -129,14 +128,15 @@ while continuer:
 
 	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
                      
-	playAgain = "oui"
-	while playAgain == "oui" or playAgain == "o":
+	playAgain = 1
+	while playAgain:
 	    displayIntro()
 	    choice = choosePath()
 	    checkPath(choice) 
 	    if choice == 'gauche' : 
-	        if playAgain == 'oui' :
-	            continue
+	        playAgain = int(input("Voulez vous rejouer ? "))
+	        if playAgain == 0 : 
+	        	break
 	    choice = chooseriviere()
 	    checkriviere(choice)
 	    if choice == 'bois' : 
@@ -154,11 +154,8 @@ while continuer:
 	            continue
 	    choice = choosefin()
 	    checkfin(choice)
-	    if choice == 'coeur' : 
-	        if playAgain == 'oui' :
-	            continue
-	    playAgain = input("Voulez vous rejouer ?(Oui ou o pour rejouer): ")
 
+	
 	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
-	continuer_jeu = 1
+

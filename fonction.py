@@ -11,7 +11,6 @@ def choosePath():
 	    path = ""
 	    while path != "droite" and path != "gauche": 
 	        path = input("Quel chemin allez vous choisir (Droite ou Gauche): ")
-
 	    return path
 
 def checkPath(chosenPath):
@@ -31,7 +30,6 @@ def checkPath(chosenPath):
 	        print("Ils sont méfiants dû à la personne derriere vous")
 	        print("C'est Alexandre !")
 	        print("Attention à vos omoplates !!!")
-	        playAgain = input("Voulez vous rejouer ?(oui pour rejouer): ")
 	        
 def chooseriviere():
 	    riviere = ""
@@ -49,7 +47,6 @@ def checkriviere(riviere) :
 	            print("Vous coulez")
 	            print("")
 	            print("")
-	            playAgain = input("Voulez vous rejouer ?(oui pour rejouer): ")
 
 def choosearme():
 	    arme = ""
@@ -66,7 +63,6 @@ def checkarme(arme) :
 	        else:
 	            print("beaucoup trop tranchant !!")
 	            print("")
-	            playAgain = input("Voulez vous rejouer ?(oui pour rejouer): ")
 
 def chooseboss():
 	    boss = ""
@@ -83,7 +79,6 @@ def checkboss(boss) :
 	        else:
 	            print("Il vous contre très facilement")
 	            print("vous tombez")
-	            playAgain = input("Voulez vous rejouer ?(oui pour rejouer): ")
 
 def choosefin():
 	    fin = ""
@@ -100,4 +95,3 @@ def checkfin(fin) :
 	        else:
 	            print("Le coeur de ce singe est dur comme l'acier !")
 	            print("")
-	            playAgain = input("Voulez vous rejouer ?(oui pour rejouer): ")

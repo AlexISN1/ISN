@@ -6,6 +6,9 @@ import time
 from fonction import * 
 from datetime import datetime
 import random
+from tkinter import * 
+import sys
+
 pygame.init()
 
 pygame.mixer.music.load('son.mp3')
@@ -16,6 +19,7 @@ fenetre = pygame.display.set_mode((450, 450))
 
 #Titre
 pygame.display.set_caption(titre_fenetre)
+
 
 #BOUCLE PRINCIPALE
 continuer = 1
@@ -85,6 +89,8 @@ while continuer:
 		#Limitation de vitesse de la boucle
 		pygame.time.Clock().tick(30)
 
+		
+
 		for event in pygame.event.get():
 
 			#Si l'utilisateur quitte, on met la variable qui continue le jeu
@@ -108,6 +114,8 @@ while continuer:
 				elif event.key == K_DOWN:
 					dk.deplacer('bas')
 
+		
+
 		#Affichages aux nouvelles positions
 		fenetre.blit(fond, (0,0))
 		niveau.afficher(fenetre)
@@ -119,43 +127,10 @@ while continuer:
 			maintenant2 = datetime.now()
 
 			if abs(maintenant2.second - maintenant.second) < 10 : 
-
 				score[nom] +=5
+
 			print(score)
 			continuer_jeu = 0
 
-	time.sleep(1)
-
-	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-                     
-	playAgain = 1
-	while playAgain:
-	    displayIntro()
-	    choice = choosePath()
-	    checkPath(choice) 
-	    if choice == 'gauche' : 
-	        playAgain = int(input("Voulez vous rejouer ? "))
-	        if playAgain == 0 : 
-	        	break
-	    choice = chooseriviere()
-	    checkriviere(choice)
-	    if choice == 'bois' : 
-	        if playAgain == 'oui' :
-	            continue
-	    choice = choosearme()
-	    checkarme(choice)
-	    if choice == 'couteau' or choice == 'epee' : 
-	        if playAgain == 'oui' :
-	            continue
-	    choice = chooseboss()
-	    checkboss(choice)
-	    if choice == 'haut' : 
-	        if playAgain == 'oui' :
-	            continue
-	    choice = choosefin()
-	    checkfin(choice)
-
 	
-	print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
-
 

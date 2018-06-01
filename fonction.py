@@ -95,3 +95,4 @@ def checkfin(fin) :
 	        else:
 	            print("Le coeur de ce singe est dur comme l'acier !")
 	            print("")
+

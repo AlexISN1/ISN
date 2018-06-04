@@ -1,98 +1,70 @@
 import time
+from tkinter import * 
 
-def displayIntro():
-	    print("Vous venez de récuperer une banane")
-	    print("Vous préférez ne pas la manger, elle pourra probablement vous être utile ")
-	    print("Vous avancez dans la jungle")
-	    print("Et la un groupe de singe vous bloque")
-	    print()
+import pygame
 
-def choosePath():
-	    path = ""
-	    while path != "droite" and path != "gauche": 
-	        path = input("Quel chemin allez vous choisir (Droite ou Gauche): ")
-	    return path
+from constantes import * 
 
-def checkPath(chosenPath):
-	    print("Vous avancez dans une jungle sauvage")
-	    time.sleep(0.5)
-	    print("Vous croisez des amis singes a qui vous passez la banane que vous venez de trouver ")
-	    time.sleep(0.5)
-	    print("Mais ils restent néanmoins suspect à votre égard...")
-	    print()
-	    time.sleep(0.5)
-	    if chosenPath == 'droite':
-	        print("C'est normal ! Ils veulent vous aider à avancer !")
-	        print("Ils vous laissent pénétrer dans la deuxième partie de la jungle")
-	        print ("Vous arrivez devant une riviere") 
-	        print ("Deux chemins s'offrent à vous")
-	    else:
-	        print("Ils sont méfiants dû à la personne derriere vous")
-	        print("C'est Alexandre !")
-	        print("Attention à vos omoplates !!!")
-	        
-def chooseriviere():
-	    riviere = ""
-	    while riviere != "bouee" and riviere != "bois": 
-	        riviere = input("Allez vous prendre la bouée ou le bout de bois ? (bouée ou bois): ")
-	        return riviere
+def jouer():
+    global menu
+    global menu1
+    global nbjeu
 
-def checkriviere(riviere) :
-	        if riviere == 'bouee':
-	            print("Vous passez sans soucis")
-	            print("")
-	            print ("") 
-	            print ("")
-	        else:
-	            print("Vous coulez")
-	            print("")
-	            print("")
+    def deplacement():
+        global dx, dy, PosX2, PosY2, score, scorebis
+        if scorebis==1 and canvas.coords(balle)[3]<=400:
+            score+=scorebis 
+            scorebis=0
+        if canvas.coords(balle)[1]<0:
+            dy=-1*dy
+        if canvas.coords(balle)[2]>500:
+            dx=-1*dx
+        if canvas.coords(balle)[0]<0:
+            dx=-1*dx
+        if canvas.coords(balle)[3]>=PosY2 and canvas.coords(balle)[2]>=canvas.coords(raquette)[0] and canvas.coords(balle)[0]<=canvas.coords(raquette)[2] and canvas.coords(balle)[3]<=490:
+            dy=-1*dy          
+            scorebis=1
+            TextGame.set("Score : "+ str(score))
+            
+        if canvas.coords(balle)[3] > 525 : 
+            tk.destroy() #détruire le jeu lorsque la balle tombe
 
-def choosearme():
-	    arme = ""
-	    while arme != "epee" and arme != "couteau" and arme != "banane" : 
-	        arme = input("Allez vous prendre l'épée, le couteau ou la banane ? (epee,couteau ou banane): ")
-	        return arme
 
-def checkarme(arme) :
-	        if arme == 'banane':
-	            print(" Bien joué c'est exactement ce qu il fallait !")
-	            print("")
-	            print ("") 
-	            print ("")
-	        else:
-	            print("beaucoup trop tranchant !!")
-	            print("")
+        if canvas.coords(balle)[3]<550:
+            tk.after(10,deplacement)
+        
+        canvas.move(balle,dx,dy)
+ 
+    def KeyBoard(event):
+        global PosX2, menu
+        Key = event.keysym
+ 
+        if Key == 'Right':
+            canvas.move(raquette,50,0)
+        if Key == 'Left':
+            canvas.move(raquette,-50,0)
 
-def chooseboss():
-	    boss = ""
-	    while boss != "haut" and boss != "bas" : 
-	        boss = input(" Un singe blanc et tres costaud apparait ! Attaquez les ! Allez vous porter un coup vers le bas ou le haut ? (haut ou bas): ")
-	        return boss
-
-def checkboss(boss) :
-	        if boss == 'bas':
-	            print(" Vous visez une partie assez sensible de l'anatomie de ce singe...")
-	            print("mais les dégâts sont présents !")
-	            print ("") 
-	            print ("")
-	        else:
-	            print("Il vous contre très facilement")
-	            print("vous tombez")
-
-def choosefin():
-	    fin = ""
-	    while fin != "coeur" and fin != "tete" : 
-	        fin = input("Portez lui le coup final ! Achevez le ! (coeur ou tete): ")
-	        return fin
-
-def checkfin(fin) :
-	        if fin == 'tete':
-	            print(" Vous lui lancez la banane dessus !")
-	            print("il tombe dans les vappes")
-	            print ("Bravo ! vous avez passé cette terrifante jungle...") 
-	            print ("")
-	        else:
-	            print("Le coeur de ce singe est dur comme l'acier !")
-	            print("")
+    
+    tk = Tk()
+    tk.title("[Pong Game]")
+    
+    canvas = Canvas(tk,width = 500, height = 500 , bd=0, bg="green")
+    canvas.pack(padx=10,pady=10)
+    
+        
+    balle = canvas.create_oval(PosX,PosY,PosX+20,PosY+20,fill='white')
+    raquette = canvas.create_rectangle(PosX2,PosY2,PosX2+100,PosY2+10,fill='white')
+ 
+    TextGame = StringVar()
+    LabelGame = Label(tk, textvariable = TextGame , bg ="white")
+    TextGame.set("Score : "+ str(score))
+    LabelGame.pack(padx = 15, pady = 5)
+ 
+    canvas.focus_set()
+ 
+    canvas.bind('<Key>',KeyBoard)
+ 
+    deplacement()
+    
+    tk.mainloop()
 
